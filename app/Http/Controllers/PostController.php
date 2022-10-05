@@ -73,7 +73,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::all();
+        return view('posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -85,7 +87,7 @@ class PostController extends Controller
      */
 public function update(PostRequest $request, $id)
     {
-        //
+        
     }
 
     /**

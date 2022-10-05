@@ -9,10 +9,12 @@
                     <article class="w-full px-4 md:w-1/2 text-xl text-gray-800 leading-normal">
                         <a href="{{ route('posts.show', $post) }}">
                             @foreach($users as $user)<p>{{ $user->name }}</p>@endforeach
-                            <p class="current_time">現在時刻：{{ date('Y-d H:i:s') }}</p>
                             <p>記事作成日:{{ date('Y-d H:i:s', strtotime('-1 day')) < $post->created_at ?: '' }}{{ $post->created_at }}
                             </p>
+                            <div>メモ
+                            <br>
                             <textarea>{{ $post->memo }}</textarea>
+                            </div>
                         </a>
                     </article>
                 @endforeach
