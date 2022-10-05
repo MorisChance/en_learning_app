@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('date');
             $table->string('time');
             $table->text('memo');
             $table->timestamps();

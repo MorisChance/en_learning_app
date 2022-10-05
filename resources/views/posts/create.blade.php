@@ -17,6 +17,9 @@
 
         <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data"
             class="rounded pt-3 pb-8 mb-4">
+                <label class="block text-gray-700 text-sm mb-2" for="category">
+                    カテゴリー
+                </label>
             @csrf
             @foreach ($categories as $category)
                 <div>
@@ -26,17 +29,22 @@
                 </div>
             @endforeach
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm mb-2" for="body">
-                    学習時間
+                <label class="block text-gray-900 text-sm mb-2" for="date">
+                    学習日時<br>
+                <input type="date" name="date" id="date" value="2022-10-01">
+                </label>
+                <label class="block text-gray-900 text-sm mb-2" for="time">
+                    勉強時間
+                <p><input type="time" name="time" id="time"> <b>to</b> <input type="time" name="time" id="time"></p> 
                 </label>
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm mb-2" for="body">
+                <label class="block text-gray-700 text-sm mb-2" for="memo">
                     メモ
                 </label>
-                <textarea name="body" rows="10"
+                <textarea name="memo" rows="10"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    required>{{ old('body') }}</textarea>
+                    required>{{ old('memo') }}</textarea>
             </div>
             <input type="submit" value="登録"
                 class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
