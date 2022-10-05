@@ -15,10 +15,6 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('memo_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')
@@ -27,6 +23,8 @@ class CreatePostsTable extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('time');
+            $table->text('memo');
             $table->timestamps();
         });
     }

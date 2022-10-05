@@ -15,16 +15,16 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $param = [[
-            'name' => 'speaking',
+            'name' => 'Speaking',
         ],
         [
-            'name' => 'writting',
+            'name' => 'Writting',
         ],
         [
-            'name' => 'reading',
+            'name' => 'Reading',
         ],
         [
-            'name' => 'listening',
+            'name' => 'Listening',
         ]];
         DB::table('categories')->insert($param);
     }
