@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -17,7 +18,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::with('user')->latest()->paginate(4);
+        $categories = Category::all();
+        $users = User::all();
+        return view('posts.index', compact('posts', 'categories', 'users'));
     }
 
     /**

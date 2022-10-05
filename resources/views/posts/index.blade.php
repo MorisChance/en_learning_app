@@ -5,6 +5,17 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     学習記録一覧です
                 </div>
+                @foreach ($posts as $post)
+                    <article class="w-full px-4 md:w-1/2 text-xl text-gray-800 leading-normal">
+                        <a href="{{ route('posts.show', $post) }}">
+                            @foreach($users as $user)<p>{{ $user->name }}</p>@endforeach
+                            <p class="current_time">現在時刻：{{ date('Y-d H:i:s') }}</p>
+                            <p>記事作成日:{{ date('Y-d H:i:s', strtotime('-1 day')) < $post->created_at ?: '' }}{{ $post->created_at }}
+                            </p>
+                            <textarea>{{ $post->memo }}</textarea>
+                        </a>
+                    </article>
+                @endforeach
             </div>
         </div>
     </div>
