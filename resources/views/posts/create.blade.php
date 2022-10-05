@@ -35,7 +35,7 @@
                 </label>
                 <label class="block text-gray-900 text-sm mb-2" for="time">
                     勉強時間
-                <p><input type="time" name="time" id="time"> <b>to</b> <input type="time" name="time" id="time"></p> 
+                <p><input type="time" name="time1" id="time1"> <b>to</b> <input type="time" name="time2" id="time2"></p> 
                 </label>
             </div>
             <div class="mb-4">

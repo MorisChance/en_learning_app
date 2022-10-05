@@ -10,7 +10,8 @@ class Post extends Model
     use HasFactory;
     protected $fillable = [
         'date',
-        'time',
+        'time1',
+        'time2',
         'memo',
         'category_id',
     ];

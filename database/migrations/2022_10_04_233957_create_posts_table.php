@@ -24,7 +24,8 @@ class CreatePostsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('date');
-            $table->string('time');
+            $table->string('time1');
+            $table->string('time2');
             $table->text('memo');
             $table->timestamps();
         });

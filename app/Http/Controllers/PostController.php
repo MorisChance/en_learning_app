@@ -44,6 +44,7 @@ class PostController extends Controller
         $post->save();
         return redirect()
             ->route('posts.show', $post)
+
             ->with('notice', '記事を登録しました');
     }
 
@@ -56,6 +57,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        $categories = Category::all();
         return view('posts.show', compact('post', 'categories'));
     }
 
