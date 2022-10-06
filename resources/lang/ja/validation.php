@@ -127,5 +127,10 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
-    'attributes'           => [],
+    'attributes'           => [
+        'category_id' => 'カテゴリー',
+        'time1' => '勉強開始時間',
+        'time2' => '勉強終了時間',
+        'date' => '勉強終了日時',
+        ],
 ];

@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif
-        <h3 class ="text-4xl text-black-900 font-semibold text-center">{{ $post->user->name }}</h3>
+        <h3 class ="text-4xl text-black-900 font-semibold">{{ $post->user->name }}</h3>
         @foreach ($categories as $category)
             <div class = "text-2xl text-black-400 ">
                 <input type="radio" name="category_id" id="category{{ $category->id }}" value="{{ $category->id }}"
@@ -38,6 +38,7 @@
                     <input type="submit" value="削除" onclick="if(!confirm('削除しますか？')){return false};" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-20">
                 </form>
             @endcan
+            <a href="{{ route('posts.index', $post) }}" class=" rounded-md bg-blue-700 text-white px-4 py-2 text-right">一覧</a>
         </div>
     </div>
 </x-app-layout>

@@ -20,8 +20,8 @@ class PostController extends Controller
     {
         $posts = Post::with('user')->latest()->paginate(4);
         $categories = Category::all();
-        $users = User::all();
-        return view('posts.index', compact('posts', 'categories', 'users'));
+        // $users = User::all();
+        return view('posts.index', compact('posts', 'categories'));
     } 
 
     /**
@@ -60,10 +60,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Post::find($id); 
         $categories = Category::all();
         return view('posts.show', compact('post', 'categories'));
-    }
+        }
 
     /**
      * Show the form for editing the specified resource.
@@ -88,13 +88,17 @@ class PostController extends Controller
 public function update(PostRequest $request, $id)
     {
         $post = Post::find($id);
-        //以下のcodeは他人の記事を更新しようとするときのエラーの表示
+        $post->fill($request->all());
+        $post->save();
+        // dd($post);においてデータがうけとれている
+        // 以下のcodeは他人の記事を更新しようとするときのエラーの表示
         if ($request->user()->cannot('update', $post)) {
         return redirect()->route('posts.show', $post)
             ->withErrors('自分の記事以外は更新できません');
-        }
+        }else{
+        return redirect()->route('posts.show', $post);
     }
-
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -103,6 +107,8 @@ public function update(PostRequest $request, $id)
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        return redirect()->route('posts.index')
+            ->with('notice', '記事を削除しました');
     }
 }

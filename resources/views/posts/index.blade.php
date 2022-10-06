@@ -7,13 +7,10 @@
                 </div>
                 @foreach ($posts as $post)
                         <a href="{{ route('posts.show', $post) }}">
-                            @foreach($users as $user)<p>{{ $user->name }}</p>@endforeach
-                            <p class = "text-blue-400">記事作成日:{{ date('Y-d H:i:s', strtotime('-1 day')) < $post->created_at ?: '' }}{{ $post->created_at }}
-                            </p>
-                            <div>メモ
-                            <br>
+                            {{-- @foreach($users as $user)<p>{{ $user->name}}</p>@endforeach --}}
+                            <p class = "text-blue-400">記録作成日:{{ date('Y-d H:i:s', strtotime('-1 day')) < $post->created_at ?: '' }}{{ $post->created_at }}</p>
+                            <div>{{ $post->category_name }}</div>
                             <textarea class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3">{{ $post->memo }}</textarea>
-                            </div>
                         </a>
                 @endforeach
             </div>
