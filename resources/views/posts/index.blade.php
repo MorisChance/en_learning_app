@@ -6,17 +6,15 @@
                     学習記録一覧です
                 </div>
                 @foreach ($posts as $post)
-                    <article class="w-full px-4 md:w-1/2 text-xl text-gray-800 leading-normal">
                         <a href="{{ route('posts.show', $post) }}">
                             @foreach($users as $user)<p>{{ $user->name }}</p>@endforeach
-                            <p>記事作成日:{{ date('Y-d H:i:s', strtotime('-1 day')) < $post->created_at ?: '' }}{{ $post->created_at }}
+                            <p class = "text-blue-400">記事作成日:{{ date('Y-d H:i:s', strtotime('-1 day')) < $post->created_at ?: '' }}{{ $post->created_at }}
                             </p>
                             <div>メモ
                             <br>
-                            <textarea>{{ $post->memo }}</textarea>
+                            <textarea class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3">{{ $post->memo }}</textarea>
                             </div>
                         </a>
-                    </article>
                 @endforeach
             </div>
         </div>

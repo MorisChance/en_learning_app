@@ -1092,6 +1092,14 @@ select {
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1116,9 +1124,6 @@ select {
 }
 .leading-7 {
   line-height: 1.75rem;
-}
-.leading-normal {
-  line-height: 1.5;
 }
 .tracking-widest {
   letter-spacing: 0.1em;
@@ -1497,10 +1502,6 @@ select {
 
   .md\:w-4\/5 {
     width: 80%;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:grid-cols-2 {

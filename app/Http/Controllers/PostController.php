@@ -22,7 +22,7 @@ class PostController extends Controller
         $categories = Category::all();
         $users = User::all();
         return view('posts.index', compact('posts', 'categories', 'users'));
-    }
+    } 
 
     /**
      * Show the form for creating a new resource.
@@ -87,7 +87,12 @@ class PostController extends Controller
      */
 public function update(PostRequest $request, $id)
     {
-        
+        $post = Post::find($id);
+        //以下のcodeは他人の記事を更新しようとするときのエラーの表示
+        if ($request->user()->cannot('update', $post)) {
+        return redirect()->route('posts.show', $post)
+            ->withErrors('自分の記事以外は更新できません');
+        }
     }
 
     /**
