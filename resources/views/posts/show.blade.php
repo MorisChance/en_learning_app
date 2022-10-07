@@ -12,16 +12,10 @@
                 </ul>
             </div>
         @endif
-        <h3 class ="text-4xl text-black-900 font-semibold">{{ $post->user->name }}</h3>
-        @foreach ($categories as $category)
-            <div class = "text-2xl text-black-400 ">
-                <input type="radio" name="category_id" id="category{{ $category->id }}" value="{{ $category->id }}"
-                    {{ old('category_id', $post->category_id) == $category->id ? 'checked' : '' }}>
-                <label for="category{{ $category->id }}">{{ $category->name }}</label>
-            </div>
-        @endforeach
+        <h5 class ="text-2xl text-black-700 font-semibold">名前：{{ $post->user->name }}</h3><br>
+        <p>カテゴリー: {{ $post->category->name }}</p>
         <p>勉強日付：{{ $post->date }}</p>
-        <p>勉強日時: {{ $post->time1 }} から {{ $post->time2 }}</p>
+        <p>勉強時間: {{ $post->time1 }} から {{ $post->time2 }}</p>
         <textarea name="body" rows="10"
             class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
             required>{{ $post->memo }}
@@ -37,8 +31,8 @@
                     @method('DELETE')
                     <input type="submit" value="削除" onclick="if(!confirm('削除しますか？')){return false};" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-20">
                 </form>
-            @endcan
-            <a href="{{ route('posts.index', $post) }}" class=" rounded-md bg-blue-700 text-white px-4 py-2 text-right">一覧</a>
+            @endcan 
+            <a href="{{ route('posts.index', $post) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-20 ">一覧</a>
         </div>
     </div>
 </x-app-layout>

@@ -22,7 +22,7 @@ class PostController extends Controller
         $categories = Category::all();
         // $users = User::all();
         return view('posts.index', compact('posts', 'categories'));
-    } 
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -60,10 +60,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id); 
-        $categories = Category::all();
-        return view('posts.show', compact('post', 'categories'));
-        }
+        $post = Post::find($id);
+        return view('posts.show', compact('post'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -85,7 +84,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-public function update(PostRequest $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $post = Post::find($id);
         $post->fill($request->all());
@@ -93,11 +92,11 @@ public function update(PostRequest $request, $id)
         // dd($post);においてデータがうけとれている
         // 以下のcodeは他人の記事を更新しようとするときのエラーの表示
         if ($request->user()->cannot('update', $post)) {
-        return redirect()->route('posts.show', $post)
-            ->withErrors('自分の記事以外は更新できません');
-        }else{
-        return redirect()->route('posts.show', $post);
-    }
+            return redirect()->route('posts.show', $post)
+                ->withErrors('自分の記事以外は更新できません');
+        } else {
+            return redirect()->route('posts.show', $post);
+        }
     }
     /**
      * Remove the specified resource from storage.
@@ -108,7 +107,10 @@ public function update(PostRequest $request, $id)
     public function destroy($id)
     {
         $post = Post::find($id);
-        return redirect()->route('posts.index')
+        //$post->delete();がいる
+        $post->delete();
+        return redirect()
+            ->route('posts.index')
             ->with('notice', '記事を削除しました');
     }
 }
