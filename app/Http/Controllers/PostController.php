@@ -88,13 +88,13 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->fill($request->all());
-        $post->save();
         // dd($post);においてデータがうけとれている
         // 以下のcodeは他人の記事を更新しようとするときのエラーの表示
         if ($request->user()->cannot('update', $post)) {
             return redirect()->route('posts.show', $post)
                 ->withErrors('自分の記事以外は更新できません');
         } else {
+            $post->save();
             return redirect()->route('posts.show', $post);
         }
     }
@@ -107,6 +107,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $this->authorize('delete', $post);
         //$post->delete();がいる
         $post->delete();
         return redirect()
